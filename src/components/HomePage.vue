@@ -11,7 +11,7 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
               <div :class="{ 'carousel-item':  index !== 0, 'carousel-item active': index === 0 }" v-for="(item, index) in itemsHavingImages" :key="item.id">
-                <img :src="item.image.url" :alt="item.name">
+                <img src="https://ae01.alicdn.com/kf/HTB1QmR7MpXXXXcxXFXXq6xXFXXXp/Summer-Teen-Girls-Fashion-Boutique-Dresses-White-Cotton-Asymmetrical-Child-Party-Dress-Simple-Kids-Dress-Child.jpg_640x640.jpg" :alt="item.name">
               </div>
             </div>
             <!-- Left and right controls -->
@@ -37,7 +37,7 @@
             <div class="row">
               <div class="col-md-4" v-for="item in items" :key="item.id">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" :src="item.image.url" :alt="item.name">
+                  <img class="card-img-top" src="https://ae01.alicdn.com/kf/HTB1QmR7MpXXXXcxXFXXq6xXFXXXp/Summer-Teen-Girls-Fashion-Boutique-Dresses-White-Cotton-Asymmetrical-Child-Party-Dress-Simple-Kids-Dress-Child.jpg_640x640.jpg" :alt="item.name">
                   <div class="card-body">
                     <h5 class="card-title">{{ item.name }}</h5>
                     <a href="#" class="btn btn-primary">Add to Cart</a>
