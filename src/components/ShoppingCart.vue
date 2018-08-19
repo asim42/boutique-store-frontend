@@ -8,32 +8,49 @@
       </li>
     </ul>
     <p>Total: {{ total }}</p>
-    <p><button :disabled="!products.length" @click="checkout(products)">Checkout</button></p>
+    <p><button :disabled="!products.length" @click="checkout()">Checkout</button></p>
     <p v-show="checkoutStatus">Checkout {{ checkoutStatus }}.</p>
   </div>
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
   computed: {
     checkoutStatus () {
+      return undefined
     },
     products () {
       return this.$store.state.cart.selectedItems
     },
     total () {
-      let total = 0
-      this.products.forEach(item => {
-        const subtotal = item.price * item.qty
-        total += subtotal
-      })
-      return total
+      return this.$store.getters['cart/total']
     }
   },
   methods: {
-    checkout (products) {
-      this.$store.dispatch('cart/checkout', products)
+    checkout () {
+      const order = {
+        user_id: 1,
+        sub_total: this.$store.getters['cart/total'],
+        order_items_attributes: []
+      }
+      this.products.forEach(item => {
+        order.order_items_attributes.push({
+          item_id: item.id,
+          quantity: item.qty
+        })
+      })
+      axios.post('https://botiquestore.herokuapp.com/api/v1/orders', order)
+        .then(response => {
+          console.log(response)
+        })
+        .catch(reason => {
+          console.log(reason)
+        })
     }
+
   }
 }
 </script>

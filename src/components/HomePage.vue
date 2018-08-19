@@ -7,7 +7,7 @@
             <div class="row">
               <div class="col-md-12">
                 <h1>All Products</h1>
-                <a @click="checkout()" class="btn btn-primary">Checkout</a>
+                <a @click="showCheckout()" class="btn btn-primary">Checkout</a>
               </div>
             </div>
             <div class="row">
@@ -58,7 +58,7 @@ export default {
         this.$store.commit('cart/addToCart', item)
       }
     },
-    checkout() {
+    showCheckout () {
       this.$router.push('/Cart')
     }
   }
@@ -66,9 +66,9 @@ export default {
 </script>
 
 <style scoped>
-/* Make the image fully responsive */
-.carousel-inner img {
+  /* Make the image fully responsive */
+  .carousel-inner img {
     width: 100%;
     height: 100%;
-}
+  }
 </style>

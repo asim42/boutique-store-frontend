@@ -8,6 +8,13 @@ const state = {
 
 // getters
 const getters = {
+  total (state) {
+    let total = 0
+    state.selectedItems.forEach(item => {
+      total += item.price * item.qty
+    })
+    return total
+  }
 }
 
 // actions
