@@ -47,10 +47,12 @@ export default {
   },
   created () {
     const that = this
-    axios.get('https://botiquestore.herokuapp.com/api/v1/items')
-      .then(response => {
-        that.$store.commit('cart/UpdateItems', response.data)
-      })
+    if (this.items.length === 0) {
+      axios.get('https://botiquestore.herokuapp.com/api/v1/items')
+        .then(response => {
+          that.$store.commit('cart/UpdateItems', response.data)
+        })
+    }
   },
   methods: {
     addToCart (item) {
